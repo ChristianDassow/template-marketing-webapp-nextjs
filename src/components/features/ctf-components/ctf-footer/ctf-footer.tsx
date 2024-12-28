@@ -1,11 +1,15 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-import Facebook from '@mui/icons-material/Facebook';
-import Instagram from '@mui/icons-material/Instagram';
-import LinkedIn from '@mui/icons-material/LinkedIn';
-import Twitter from '@mui/icons-material/Twitter';
-import { Theme, Container, Typography } from '@mui/material';
+// import Facebook from '@mui/icons-material/Facebook';
+// import Instagram from '@mui/icons-material/Instagram';
+// import LinkedIn from '@mui/icons-material/LinkedIn';
+// import Twitter from '@mui/icons-material/Twitter';
+import {
+  Theme,
+  Container,
+  // Typography
+} from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { useTranslation } from 'next-i18next';
+// import { useTranslation } from 'next-i18next';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
 
@@ -16,7 +20,7 @@ import {
 import { LanguageSelector } from '@src/components/features/language-selector';
 import { Link } from '@src/components/shared/link';
 import { useContentfulContext } from '@src/contentful-context';
-import Logo from '@src/icons/logo-tagline.svg';
+// import Logo from '@src/icons/logo-tagline.svg';
 import { CONTAINER_WIDTH } from '@src/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -225,7 +229,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const CtfFooter = (props: FooterFieldsFragment) => {
   const footerContent = props.items[0];
 
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const { locale } = useContentfulContext();
   const inspectorMode = useContentfulInspectorMode();
 
@@ -300,79 +304,6 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
             <LanguageSelector />
           </section>
         </footer>
-      </Container>
-      <Container maxWidth={false} className={classes.footerCorporateContainer}>
-        <section className={classes.footerCorporate}>
-          <div className={classes.corporateLogoMenu}>
-            <div className={classes.corporateLogoContainer}>
-              <Logo className={classes.corporateLogo} />
-            </div>
-
-            <section className={classes.copyrightAndLegal}>
-              <p className={classes.copyright}>
-                {t('legal.copyright', { year: new Date().getFullYear() })}
-              </p>
-              {footerContent?.legalLinks?.featuredPagesCollection?.items?.length && (
-                <nav role="navigation" className={classes.legalMenuWrapper}>
-                  <ul className={classes.legalMenu}>
-                    {renderMenuGroupLinks(
-                      footerContent.legalLinks.featuredPagesCollection,
-                      classes.legalMenuItem,
-                    )}
-                  </ul>
-                </nav>
-              )}
-            </section>
-          </div>
-
-          <div className={classes.socialDisclaimer}>
-            <div className={classes.socialWrapper}>
-              <Typography className={classes.socialTitle}>{t('socials.findUsOn')}</Typography>
-              <div className={classes.social}>
-                {footerContent?.twitterLink && (
-                  <a
-                    href={footerContent.twitterLink}
-                    title={t('socials.twitter')}
-                    target="_blank"
-                    rel="nofollow noreferrer"
-                  >
-                    <Twitter />
-                  </a>
-                )}
-                {footerContent?.facebookLink && (
-                  <a
-                    href={footerContent.facebookLink}
-                    title={t('socials.facebook')}
-                    target="_blank"
-                    rel="nofollow noreferrer"
-                  >
-                    <Facebook />
-                  </a>
-                )}
-                {footerContent?.linkedinLink && (
-                  <a
-                    href={footerContent.linkedinLink}
-                    title={t('socials.linkedin')}
-                    target="_blank"
-                    rel="nofollow noreferrer"
-                  >
-                    <LinkedIn />
-                  </a>
-                )}
-                {footerContent?.instagramLink && (
-                  <a
-                    href={footerContent.instagramLink}
-                    title={t('socials.instagram')}
-                    target="_blank"
-                    rel="nofollow noreferrer"
-                  >
-                    <Instagram />
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
       </Container>
     </>
   );
